@@ -15,18 +15,15 @@ class NewsCubit extends Cubit<NewsState>
   List<dynamic> BusinessNews = [];
   List<dynamic> SportsNews = [];
   List<dynamic> ScienceNews = [];
-  List<dynamic> SearchNews = [];
   List<Widget> Screens=[
     BusinessScreen(),
     SportsScreen(),
     ScienceScreen(),
-
   ];
   List<String> titles=[
     'Business News',
     'Sports News',
     'Science News',
-
   ];
   NewsCubit() : super(NewsInitialState());
 
@@ -104,25 +101,6 @@ class NewsCubit extends Cubit<NewsState>
     }else{
       emit(NewsGetScienceSuccessState());
     }
-  }
-
-  void getSearchNews(String value) {
-
-    emit(NewsOnloadingState());
-      DioHelper.getData(
-          url: "v2/everything",
-          query: {
-            'q': '$value',
-            'apikey': '65f7f556ec76449fa7dc7c0069f040ca',
-          }
-      ).then((value) {
-        SearchNews = value.data['articles'];
-        emit(NewsGetSearchSuccessState());
-      }).catchError((error) {
-        emit(NewsGetSearchErrorState(error.toString()));
-        print(error.toString());
-      });
-
   }
 
   bool isDark = false;
