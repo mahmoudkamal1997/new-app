@@ -17,6 +17,7 @@ class BusinessScreen extends StatelessWidget {
           condition: NewsList.length > 0,
           builder:(context)=> ListView.separated(
             physics: BouncingScrollPhysics(),
+
             itemBuilder: (ctx, index)=>buildNewsItem(article: NewsList[index],context: context),
             separatorBuilder: (ctx,index) => Padding(
               padding: const EdgeInsets.all(12.0),
