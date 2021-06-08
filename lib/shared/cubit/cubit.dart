@@ -107,6 +107,8 @@ class NewsCubit extends Cubit<NewsState>
   void changeThemeMode({bool fromShared}) {
     if (fromShared != null) {
       isDark = fromShared;
+
+      print ('from shared $fromShared');
       emit(NewsChangeThemeModeState());
     }
     else {
